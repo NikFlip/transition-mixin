@@ -1,0 +1,24 @@
+{
+  "name": "transition-mixin",
+  "version": "1.0.0",
+  "description": "This SASS mixin gives you more control over transition properties",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikFlip/transition-mixin.git"
+  },
+  "keywords": [
+    "sass",
+    "transition",
+    "mixin"
+  ],
+  "author": "Niklas Köhler <kontakt@niklaskoehler.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NikFlip/transition-mixin/issues"
+  },
+  "homepage": "https://github.com/NikFlip/transition-mixin#readme"
+}

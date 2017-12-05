@@ -10,7 +10,7 @@
 
     @each $declaration in $properties {
         @if type-of($declaration) == 'map' {
-            $duration: if(map_get($declaration, 'duration'), #{map_get($duration, 'duration')}, $duration);
+            $duration: if(map_get($declaration, 'duration'), #{map_get($declaration, 'duration')}, $duration);
             $timing-function: if(map_get($declaration, 'timing-function'), #{map_get($declaration, 'timing-function')}, $timing-function);
             $property: if(map_get($declaration, 'property'), #{map_get($declaration, 'property')}, $property);
         } @else {

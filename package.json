@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/NikFlip/transition-mixin/issues"
   },
-  "homepage": "https://github.com/NikFlip/transition-mixin#readme"
+  "homepage": "https://github.com/NikFlip/transition-mixin#readme",
+  "devDependencies": {
+    "sass-true": "^3.0.2"
+  }
 }

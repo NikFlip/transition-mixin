@@ -4,7 +4,7 @@
   "description": "This SASS mixin gives you more control over transition properties",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/node-sass test.scss"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/NikFlip/transition-mixin/issues"
   },
-  "homepage": "https://github.com/NikFlip/transition-mixin#readme"
+  "homepage": "https://github.com/NikFlip/transition-mixin#readme",
+  "devDependencies": {
+    "sass-true": "^3.0.2"
+  }
 }

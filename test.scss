@@ -1,0 +1,67 @@
+@import './node_modules/sass-true/sass/true';
+
+@import 'transition-mixin';
+
+@include it('Outputs one fully declaration - for background-color') {
+    @include assert {
+        @include output {
+            @include transition('background-color');
+        }
+
+        @include expect {
+            transition: background-color 0.25s ease;
+        }
+    }
+}
+
+@include it('Outputs two fully declarations - for color and transform') {
+    @include assert {
+        @include output {
+            @include transition('color', 'transform');
+        }
+
+        @include expect {
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+    }
+}
+
+@include it('Outputs a specific duration time') {
+    @include assert {
+        @include output {
+            @include transition((
+                duration: '5s'
+            ));
+        }
+
+        @include expect {
+            transition: all 5s ease;
+        }
+    }
+}
+
+@include it('Outputs two individually declarations - for width and height') {
+    @include assert {
+        @include output {
+            $first-declaration: (
+                duration: 1s,
+                property: width,
+                timing-function: linear,
+            );
+
+            $second-declaration: (
+                property: height,
+                timing-function: ease-in,
+            );
+
+            @include transition(
+                $first-declaration,
+                $second-declaration
+            );
+        }
+
+        @include expect {
+            transition: width 1s linear, height 0.25s ease-in;
+        }
+    }
+}

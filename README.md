@@ -60,3 +60,24 @@ $map: (
 ```
 
 All these values are optional. If one of these is missing, the default value will be used.
+
+## Testing
+
+For simple mixin tests I use [true](https://github.com/oddbird/true]).
+Just type `$ yarn test` in your console.
+
+It prints two selector blocks: assert and expect.
+
+A test looks like this:
+```css
+/* Test: Outputs two fully declarations - for color and transform */
+/*   ASSERT:    */
+/*   OUTPUT   */
+.test-output {
+  transition: color 0.25s ease, transform 0.25s ease; }
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  transition: color 0.25s ease, transform 0.25s ease; }
+```

@@ -4,7 +4,7 @@
   "description": "This SASS mixin gives you more control over transition properties",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/node-sass test.scss"
   },
   "repository": {
     "type": "git",

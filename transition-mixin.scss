@@ -3,12 +3,13 @@
  * @type {map}
  */
 @mixin transition($properties...) {
-    $duration: .25s !default;
-    $timing-function: ease !default;
-    $property: all !default;
     $declarations: ();
 
     @each $declaration in $properties {
+        $duration: .25s;
+        $timing-function: ease;
+        $property: all;
+
         @if type-of($declaration) == 'map' {
             $duration: if(map_get($declaration, 'duration'), #{map_get($declaration, 'duration')}, $duration);
             $timing-function: if(map_get($declaration, 'timing-function'), #{map_get($declaration, 'timing-function')}, $timing-function);

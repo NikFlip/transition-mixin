@@ -49,11 +49,12 @@ Will print this:
 
 ## Parameters
 
-The mixin expects a key value map that looks like this:
+The mixin expects a key value map that looks like this (these are the defaults):
 
 ```scss
 $map: (
     duration: .25s,
+    delay: false, //use something like .25s
     property: background-size,
     timing-function: ease-in,
 )

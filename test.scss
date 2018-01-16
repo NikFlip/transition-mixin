@@ -40,6 +40,20 @@
     }
 }
 
+@include it('Outputs a specific delay') {
+    @include assert {
+        @include output {
+            @include transition((
+                delay: '5s'
+            ));
+        }
+
+        @include expect {
+            transition: all 0.25s 5s ease;
+        }
+    }
+}
+
 @include it('Outputs two individually declarations - for width and height') {
     @include assert {
         @include output {

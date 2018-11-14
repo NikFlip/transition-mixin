@@ -14,7 +14,7 @@ When the mixin has been imported you're able to use it in multiple ways:
 
 ```scss
 .my-selector {
-    @include transition('border-color', 'box-shadow', 'background-size');
+    @include transition-mixin('border-color', 'box-shadow', 'background-size');
 }
 ```
 
@@ -35,7 +35,7 @@ $my-special-transition: (
     timing-function: cubic-bezier(0.44,-0.55, 0.24, 2.7)
 );
 
-@include transition('border-color', 'box-shadow', $my-special-transition);
+@include transition-mixin('border-color', 'box-shadow', $my-special-transition);
 ```
 
 Will print this:

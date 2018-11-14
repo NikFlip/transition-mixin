@@ -5,7 +5,7 @@
 @include it('Outputs one fully declaration - for background-color') {
     @include assert {
         @include output {
-            @include transition('background-color');
+            @include transition-mixin('background-color');
         }
 
         @include expect {
@@ -17,7 +17,7 @@
 @include it('Outputs two fully declarations - for color and transform') {
     @include assert {
         @include output {
-            @include transition('color', 'transform');
+            @include transition-mixin('color', 'transform');
         }
 
         @include expect {
@@ -29,7 +29,7 @@
 @include it('Outputs a specific duration time') {
     @include assert {
         @include output {
-            @include transition((
+            @include transition-mixin((
                 duration: '5s'
             ));
         }
@@ -43,7 +43,7 @@
 @include it('Outputs a specific delay') {
     @include assert {
         @include output {
-            @include transition((
+            @include transition-mixin((
                 delay: '5s'
             ));
         }
@@ -68,7 +68,7 @@
                 timing-function: ease-in,
             );
 
-            @include transition(
+            @include transition-mixin(
                 $first-declaration,
                 $second-declaration
             );

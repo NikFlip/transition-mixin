@@ -2,7 +2,7 @@
  * transition mixin
  * @type {map}
  */
-@mixin transition($properties...) {
+@mixin transition-mixin($properties...) {
     $declarations: ();
 
     @each $declaration in $properties {

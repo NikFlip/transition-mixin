@@ -1,6 +1,6 @@
 {
   "name": "transition-mixin",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "This SASS mixin gives you more control over transition properties",
   "main": "index.js",
   "scripts": {

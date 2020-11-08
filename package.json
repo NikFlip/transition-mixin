@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/NikFlip/transition-mixin#readme",
   "devDependencies": {
-    "node-sass": "^4.13.1",
+    "node-sass": "^5.0.0",
     "sass-true": "^5.0.0"
   }
 }

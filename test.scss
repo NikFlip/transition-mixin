@@ -1,5 +1,4 @@
-@import './node_modules/sass-true/sass/true';
-
+@use './node_modules/sass-true' as *;
 @import 'transition-mixin';
 
 @include it('Outputs one fully declaration - for background-color') {

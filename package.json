@@ -1,6 +1,6 @@
 {
   "name": "transition-mixin",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "This SASS mixin gives you more control over transition properties",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/NikFlip/transition-mixin#readme",
   "devDependencies": {
-    "sass": "^1.56.1",
-    "sass-true": "^6.1.0"
+    "sass": "^1.77.5",
+    "sass-true": "^8.0.0"
   }
 }

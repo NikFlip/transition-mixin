@@ -1,10 +1,19 @@
 {
   "name": "transition-mixin",
-  "version": "1.4.3",
-  "description": "This SASS mixin gives you more control over transition properties",
-  "main": "index.js",
+  "version": "1.5.0",
+  "description": "A Sass mixin for composing CSS transitions",
+  "sass": "./transition-mixin.scss",
+  "exports": {
+    ".": {
+      "sass": "./transition-mixin.scss",
+      "default": "./transition-mixin.scss"
+    }
+  },
+  "files": [
+    "transition-mixin.scss"
+  ],
   "scripts": {
-    "test": "./node_modules/.bin/sass test.scss"
+    "test": "node --test test.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +31,7 @@
   },
   "homepage": "https://github.com/NikFlip/transition-mixin#readme",
   "devDependencies": {
-    "sass": "^1.77.5",
-    "sass-true": "^8.0.0"
+    "sass": "^1.101.0",
+    "sass-true": "^10.1.0"
   }
 }

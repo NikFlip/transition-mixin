@@ -1,80 +1,147 @@
-@use './node_modules/sass-true' as *;
-@import 'transition-mixin';
+@use 'pkg:sass-true' as true;
+@use 'transition-mixin' as transition;
 
-@include it('Outputs one fully declaration - for background-color') {
-    @include assert {
-        @include output {
-            @include transition-mixin('background-color');
-        }
+@include true.describe('transition-mixin') {
+    @include true.it('outputs a transition for one property') {
+        @include true.assert {
+            @include true.output {
+                @include transition.transition-mixin('background-color');
+            }
 
-        @include expect {
-            transition: background-color 0.25s ease;
-        }
-    }
-}
-
-@include it('Outputs two fully declarations - for color and transform') {
-    @include assert {
-        @include output {
-            @include transition-mixin('color', 'transform');
-        }
-
-        @include expect {
-            transition: color 0.25s ease, transform 0.25s ease;
+            @include true.expect {
+                transition: background-color 0.25s ease;
+            }
         }
     }
-}
 
-@include it('Outputs a specific duration time') {
-    @include assert {
-        @include output {
-            @include transition-mixin((
-                duration: '5s'
-            ));
-        }
+    @include true.it('outputs transitions for multiple properties') {
+        @include true.assert {
+            @include true.output {
+                @include transition.transition-mixin('color', 'transform');
+            }
 
-        @include expect {
-            transition: all 5s ease;
+            @include true.expect {
+                transition: color 0.25s ease, transform 0.25s ease;
+            }
         }
     }
-}
 
-@include it('Outputs a specific delay') {
-    @include assert {
-        @include output {
-            @include transition-mixin((
-                delay: '5s'
-            ));
-        }
+    @include true.it('uses a custom duration') {
+        @include true.assert {
+            @include true.output {
+                @include transition.transition-mixin((
+                    duration: 5s,
+                ));
+            }
 
-        @include expect {
-            transition: all 0.25s 5s ease;
+            @include true.expect {
+                transition: all 5s ease;
+            }
         }
     }
-}
 
-@include it('Outputs two individually declarations - for width and height') {
-    @include assert {
-        @include output {
-            $first-declaration: (
-                duration: 1s,
-                property: width,
-                timing-function: linear,
-            );
+    @include true.it('uses a custom delay') {
+        @include true.assert {
+            @include true.output {
+                @include transition.transition-mixin((
+                    delay: 5s,
+                ));
+            }
 
-            $second-declaration: (
-                property: height,
-                timing-function: ease-in,
-            );
-
-            @include transition-mixin(
-                $first-declaration,
-                $second-declaration
-            );
+            @include true.expect {
+                transition: all 0.25s 5s ease;
+            }
         }
+    }
 
-        @include expect {
-            transition: width 1s linear, height 0.25s ease-in;
+    @include true.it('supports zero duration and delay') {
+        @include true.assert {
+            @include true.output {
+                @include transition.transition-mixin((
+                    property: opacity,
+                    duration: 0s,
+                    delay: 0s,
+                ));
+            }
+
+            @include true.expect {
+                transition: opacity 0s 0s ease;
+            }
+        }
+    }
+
+    @include true.it('supports CSS timing functions') {
+        @include true.assert {
+            @include true.output {
+                @include transition.transition-mixin((
+                    property: transform,
+                    timing-function: cubic-bezier(0.1, 0.2, 0.3, 0.4),
+                ));
+            }
+
+            @include true.expect {
+                transition: transform 0.25s cubic-bezier(0.1, 0.2, 0.3, 0.4);
+            }
+        }
+    }
+
+    @include true.it('keeps support for quoted map values') {
+        @include true.assert {
+            @include true.output {
+                @include transition.transition-mixin((
+                    property: 'opacity',
+                    duration: '1s',
+                    delay: '0.5s',
+                    timing-function: 'linear',
+                ));
+            }
+
+            @include true.expect {
+                transition: opacity 1s 0.5s linear;
+            }
+        }
+    }
+
+    @include true.it('uses defaults for false map values') {
+        @include true.assert {
+            @include true.output {
+                @include transition.transition-mixin((
+                    property: false,
+                    duration: false,
+                    delay: false,
+                    timing-function: false,
+                ));
+            }
+
+            @include true.expect {
+                transition: all 0.25s ease;
+            }
+        }
+    }
+
+    @include true.it('supports individual settings for each transition') {
+        @include true.assert {
+            @include true.output {
+                $first-declaration: (
+                    duration: 1s,
+                    property: width,
+                    timing-function: linear,
+                );
+
+                $second-declaration: (
+                    property: height,
+                    timing-function: ease-in,
+                );
+
+                @include transition.transition-mixin(
+                    $first-declaration,
+                    $second-declaration
+                );
+            }
+
+            @include true.expect {
+                transition: width 1s linear, height 0.25s ease-in;
+            }
         }
     }
 }

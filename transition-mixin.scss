@@ -1,27 +1,71 @@
-/**
- * transition mixin
- * @type {map}
- */
-@mixin transition-mixin($properties...) {
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+
+@function _unquote-string($value) {
+    @if meta.type-of($value) == 'string' {
+        @return string.unquote($value);
+    }
+
+    @return $value;
+}
+
+@function _map-value($settings, $key, $default) {
+    @if map.has-key($settings, $key) {
+        $value: map.get($settings, $key);
+
+        @if $value != null and $value != false {
+            @return $value;
+        }
+    }
+
+    @return $default;
+}
+
+/// Output one or more CSS transition declarations.
+///
+/// Each argument can be a property name or a map containing `property`,
+/// `duration`, `delay`, and `timing-function`.
+@mixin transition-mixin($transitions...) {
+    @if list.length($transitions) == 0 {
+        @error 'transition-mixin requires at least one transition.';
+    }
+
     $declarations: ();
 
-    @each $declaration in $properties {
-        $duration: .25s;
-        $delay: false;
-        $timing-function: ease;
+    @each $transition in $transitions {
         $property: all;
+        $duration: 0.25s;
+        $delay: null;
+        $timing-function: ease;
 
-        @if type-of($declaration) == 'map' {
-            $duration: if(map_get($declaration, 'duration'), #{map_get($declaration, 'duration')}, $duration);
-            $delay: if(map_get($declaration, 'delay'), #{map_get($declaration, 'delay')}, $delay);
-            $timing-function: if(map_get($declaration, 'timing-function'), #{map_get($declaration, 'timing-function')}, $timing-function);
-            $property: if(map_get($declaration, 'property'), #{map_get($declaration, 'property')}, $property);
+        @if meta.type-of($transition) == 'map' {
+            $property: _map-value($transition, 'property', $property);
+            $duration: _map-value($transition, 'duration', $duration);
+            $delay: _map-value($transition, 'delay', $delay);
+            $timing-function: _map-value(
+                $transition,
+                'timing-function',
+                $timing-function
+            );
         } @else {
-            $property: $declaration;
+            $property: $transition;
         }
-        
-        $delayValue: if($delay, ' ' + $delay, '');
-        $declarations: append($declarations, #{$property + ' ' + $duration + $delayValue + ' ' + $timing-function}, comma);
+
+        $property: _unquote-string($property);
+        $duration: _unquote-string($duration);
+        $delay: _unquote-string($delay);
+        $timing-function: _unquote-string($timing-function);
+
+        $declaration: $property $duration;
+
+        @if $delay != null and $delay != false {
+            $declaration: list.append($declaration, $delay);
+        }
+
+        $declaration: list.append($declaration, $timing-function);
+        $declarations: list.append($declarations, $declaration, comma);
     }
 
     transition: $declarations;

@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/NikFlip/transition-mixin#readme",
   "devDependencies": {
-    "sass": "^1.102.0",
+    "sass": "^1.105.0",
     "sass-true": "^10.1.0"
   }
 }
